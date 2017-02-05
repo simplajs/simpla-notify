@@ -27,7 +27,7 @@ Note for cross-browser support you should also include the [Web Components Polyf
 
 --
 
-MIT © Simpla
+MIT © [Simpla](https://www.simpla.io)
 
 [webcomponents]: https://github.com/webcomponents/webcomponentsjs
 
