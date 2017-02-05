@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>simpla-notify Demo</title>
+
+    <!-- Import Web Components polyfill -->
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <!-- Use shadow DOM if available -->
+    <script>
+      window.Polymer = { dom: 'shadow' };
+    </script>
+
+    <!-- Setup Simpla -->
+    <script src="../simpla/simpla.js"></script>
+    <script>
+      Simpla.init('S1OAwHrr')
+    </script>
+
+    <!-- Import component -->
+    <link rel="import" href="../simpla-notify.html">
+
+  </head>
+  <body unresolved>
+
+    <button id="notify">fire notification</button>
+    <button id="error">fire error</button>
+
+    <simpla-notify></simpla-notify>
+
+    <script>
+      var notification = new CustomEvent('simpla-notification', {
+            detail: { text: 'something happened' }
+          }),
+           error = new CustomEvent('simpla-notification', {
+            detail: {
+              text: 'something went wrong',
+              error: true
+            }
+          });
+
+      document.querySelector('#notify')
+        .addEventListener('click', function() {
+          window.dispatchEvent(notification);
+        });
+
+      document.querySelector('#error')
+        .addEventListener('click', function() {
+          window.dispatchEvent(error);
+        });
+    </script>
+
+  </body>
+</html>

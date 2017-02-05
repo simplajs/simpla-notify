@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>simpla-notify</title>
+    <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../simpla-notify.html">
+
+  </head>
+  <body>
+    <test-fixture id="default">
+      <template>
+        <simpla-notify></simpla-notify>
+      </template>
+    </test-fixture>
+    <script>
+      describe('<simpla-notify>', function() {
+        var component;
+
+        beforeEach(function() {
+          component = fixture('default');
+        });
+
+        it('is okay', function() {
+          expect(component).to.be.ok;
+        });
+
+      });
+    </script>
+  </body>
+</html>

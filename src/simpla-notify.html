@@ -1,0 +1,88 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../simpla-styles/simpla-styles.html" async>
+<link rel="import" href="../paper-toast/paper-toast.html">
+
+<dom-module id="simpla-notify">
+  <template>
+    <style>
+      :host, *, *::before, *::after {
+        box-sizing: border-box;
+        -moz-osx-font-smoothing: grayscale;
+         -webkit-font-smoothing: antialiased;
+                 font-smoothing: antialiased;
+      }
+
+      .toast {
+        font-family: var(--simpla-font-family);
+        background: var(--simpla-grey-700);
+        color: white;
+        font-size: var(--simpla-scale-00);
+        min-width: 0;
+        min-height: 0;
+        margin: 1.4rem;
+        user-select: none;
+        border-radius: var(--simpla-border-radius);
+        box-shadow: var(--simpla-elevation-1);
+        white-space: nowrap;
+        z-index: 2147483647;
+      }
+
+      .toast[data-error] {
+        background: var(--simpla-red);
+      }
+    </style>
+
+    <paper-toast
+      id="toast"
+      class="toast"
+      horizontal-align="right"
+      data-error$="[[error]]">
+    </paper-toast>
+
+  </template>
+
+  <script>
+    const EVENT_NAME = 'simpla-notification';
+
+    class SimplaNotify {
+      beforeRegister() {
+        this.is = 'simpla-notify';
+
+        this.properties = {
+
+          /**
+           * Whether to fire error toast
+           * @type {Boolean}
+           */
+          error: Boolean
+
+        };
+      }
+
+      /**
+       * Listen for notification events on attach
+       * @return {undefined}
+       */
+      attached() {
+        window.addEventListener(EVENT_NAME,
+          (e) => this.notify(e)
+        );
+      }
+
+      /**
+       * Fire toast from notification event
+       * @param  {CustomEvent} e Notification event
+       * @return {undefined}
+       */
+      notify(e) {
+        let notification = e.detail;
+
+        this.error = !!notification.error;
+        this.$.toast.show({
+          text: notification.text
+        });
+      }
+    };
+    Polymer(SimplaNotify)
+  </script>
+</dom-module>
