@@ -3,8 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>simpla-notify</title>
-    <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+
+    <!-- Setup WCT -->
+    <script src="https://unpkg.com/webcomponents.js@^0.7.24/webcomponents-lite.min.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
+
+    <!-- Setup Simpla -->
+    <script src="https://unpkg.com/simpla@^2.0.0"></script>
+    <script>
+      Simpla.init('test');
+    </script>
 
     <!-- Import the element to test -->
     <link rel="import" href="../simpla-notify.html">
