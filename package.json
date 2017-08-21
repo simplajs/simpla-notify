@@ -1,6 +1,6 @@
 {
   "name": "simpla-notify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beautiful notifications for Simpla elements",
   "main": "simpla-notify.html",
   "scripts": {
